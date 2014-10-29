@@ -1,0 +1,63 @@
+import numpy
+
+l = [1,2,3]
+
+m = numpy.array([1,2,3])
+
+m.shape
+(3,)
+
+A = numpy.array ([[1,2,3],[4,5,6]])
+
+// Add 1 to all values less then 3
+A[A<3] = [A<3] + 1
+
+// Max of first row
+numpy.max(A[1, :])
+
+// Returns max list
+numpy.max(A,0)
+
+Q(s,a)
+
+numStates=180
+
+numActions=2
+
+// Table with zeros
+q = numpy.zeros((numStates, numActions))
+
+ActionHit=1
+
+ActionStick=0
+
+numStates = 182
+
+q = numpy.zeros((numStates, numActions))
+q[1,ActionHit]
+
+s=120
+q[s,Actionstick]
+0,0
+
+q[-1, ActionHit]
+0,0
+
+r, s_prime = blackjack.sample(s,a)
+
+s_prime = 120
+q[s_prime,:]
+//array([0., 0.])
+
+numpy.max(q[s_prime,:])
+0.0
+
+q[s_prime,:] = numpy.array([1,2])
+numpy.max(q[s_prime, :])
+
+(epsilon policy)
+numpy.random.random((2,2))
+a=numpy.random.randint(1,10)
+a=numpy.random.random((4,4)
+
+numpy.argmax(a[2,:])
