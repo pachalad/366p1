@@ -3,7 +3,7 @@ import blackjack
 from numpy import *
 from random import *
 from scipy import *
-numEpisodes = 10000
+numEpisodes = 1000000
 numStates = 182
 numActions= 2
 q = zeros((numStates, numActions))    
@@ -13,7 +13,7 @@ def randomPolicy(s):
     return a
 def randomShowOneGame():  
     y = 1
-    alpha=1
+    alpha=.001
     G = 0
     s=blackjack.init()
     turn=0
@@ -27,26 +27,33 @@ def randomShowOneGame():
         s=sp
         G=G+r
     return G
-
+asdf
 q = zeros((numStates, numActions))    
 
+
 def Policy(s):
-    a=randint(0,1)
+    epsilon=.1
+    b=randint(0,100)/100
+    if (b<epsilon):
+        a=randint(0,1)
+    else:
+        a=argmax(q[s, :])
     return a
 def ShowOneGame():  
     y = 1
-    alpha=1
+    alpha=.001
     G = 0
     s=blackjack.init()
     turn=0
     while s!=-1: #-1 is terminal
         a=Policy(s);
         r,sp=blackjack.sample(s,a)
-        blackjack.printPolicy(Policy)
-        print("turn %d: s %d a %d -> r %d sp %d "%(turn,s,a,r,sp),end="")
-        print("\t Player Sum: %d  Dealer Card: %d  Usable Ace: %d"%(blackjack.playerSum,blackjack.dealerCard, blackjack.usableAce))
+        #print("turn %d: s %d a %d -> r %d sp %d "%(turn,s,a,r,sp),end="")
+        #print("\t Player Sum: %d  Dealer Card: %d  Usable Ace: %d"%(blackjack.playerSum,blackjack.dealerCard, blackjack.usableAce))
         turn+=1
+        print("This is s",s,"This is a",a,"This is q[s,a]",q[s,a])
         q[s,a]=q[s,a]+alpha*(r+y*max(q[sp, :])-q[s,a])
+        print("---This is s",s,"This is a",a,"This is q[s,a]",q[s,a])
         s=sp
         G=G+r
     return G
