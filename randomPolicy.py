@@ -3,7 +3,7 @@ import blackjack
 from numpy import *
 from random import *
 from scipy import *
-numEpisodes = 10000
+numEpisodes = 100000
 
 
 def showOneGame():
@@ -24,16 +24,14 @@ returnSum = 0.0
     
 for episodeNum in range(numEpisodes):
     G = 0
-    r = 0
     s=blackjack.init()
     R,sp=blackjack.sample(s,0)
     while s!=-1:
         a=randint(0,1)
         s=sp
-        r=r+R
+        G=G+R
         R,sp=blackjack.sample(s,a)
        
-    G=r
     print("Episode: ", episodeNum, "Return: ", G)
     returnSum = returnSum + G
 print("Average return: ", returnSum/numEpisodes)
