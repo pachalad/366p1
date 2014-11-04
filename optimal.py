@@ -4,7 +4,7 @@ from numpy import *
 from random import *
 from scipy import *
 from sys import *
-numEpisodes = 1000000
+numEpisodes = 5000
 numStates = 182
 numActions= 2
 q = zeros((numStates, numActions))   
@@ -39,17 +39,17 @@ returnSum = 0.0
 bestAlpha=0
 bestY=0
 runningSum=-100
-for i in range(50,100,5):
-    for j in range(0,50,5):
+for i in range(0,100,10):
+    for j in range(0,100,10):
         returnSum = 0.0
-        time=datetime.time
-        q = zeros((numStates, numActions))   
+        q = zeros((numStates, numActions))
+        print(q)   
         for episodeNum in range(numEpisodes):
             G=ShowOneGame(i,j)
             returnSum = returnSum + G
-            if (returnSum/numEpisodes)>runningSum:
-                runningSum=returnSum/numEpisodes
-                bestAlpha=i
-                bestY=j
-        print(datetime.time-time)
+        if (returnSum/numEpisodes)>runningSum:
+            runningSum=returnSum/numEpisodes
+            bestAlpha=i
+            bestY=j
+        print(i,j)
 print("Best Alpha ",bestAlpha/100,"best y ",bestY/100,"Running sum",runningSum)
