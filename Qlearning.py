@@ -27,7 +27,6 @@ def randomShowOneGame():
         s=sp
         G=G+r
     return G
-asdf
 q = zeros((numStates, numActions))    
 
 
@@ -51,9 +50,7 @@ def ShowOneGame():
         #print("turn %d: s %d a %d -> r %d sp %d "%(turn,s,a,r,sp),end="")
         #print("\t Player Sum: %d  Dealer Card: %d  Usable Ace: %d"%(blackjack.playerSum,blackjack.dealerCard, blackjack.usableAce))
         turn+=1
-        print("This is s",s,"This is a",a,"This is q[s,a]",q[s,a])
         q[s,a]=q[s,a]+alpha*(r+y*max(q[sp, :])-q[s,a])
-        print("---This is s",s,"This is a",a,"This is q[s,a]",q[s,a])
         s=sp
         G=G+r
     return G
