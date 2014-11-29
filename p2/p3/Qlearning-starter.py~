@@ -91,7 +91,7 @@ for run in range(numRuns):
 	runSum += returnSum
 print("Overall average return:", runSum/numRuns/numEpisodes)
 for i in range(50):
-	averages[i]=average[i]/50
+	averages[i]=averages[i]/50
 writeAverages("ave",averages)
 
 
