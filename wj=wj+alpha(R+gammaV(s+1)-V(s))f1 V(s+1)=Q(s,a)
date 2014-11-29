@@ -1,0 +1,4 @@
+wj=wj+alpha(R+gammaV(s+1)-V(s))f1 V(s+1)=Q(s,a)
+V(s)=sum(wifi)
+
+wj=wj+alpha(R+Q(S(t+1),A(t+1))-Q())Fj
